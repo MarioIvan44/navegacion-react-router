@@ -1,10 +1,10 @@
 import React from "react";
  
-import DataTestForm from "../components/DataTestForm";
-import DataTestList from "../components/DataTestList";
-import useDataTest from "../hooks/useDataTest";
+import DataTestFormSingers from "../components/DataTestFormSingers";
+import DataTestListSingers from "../components/DataTestListSingers";
+import useDataTestSingers from "../hooks/useDataTestSingers";
  
-const Contact = () => {
+const Singers = () => {
   const {
     activeTab,
     setActiveTab,
@@ -14,15 +14,17 @@ const Contact = () => {
     error,
     message,
     id,
-    name,
-    setName,
-    age,
-    setAge,
+    cancion,
+    setCancion,
+    cantante,
+    setCantante,
+    nacionalidad,
+    setNacionalidad,
     openCreateForm,
     handleEdit,
     handleSubmit,
     handleDelete,
-  } = useDataTest();
+  } = useDataTestSingers();
  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 px-4 py-10">
@@ -32,11 +34,10 @@ const Contact = () => {
             Data Test CRUD
           </p>
           <h1 className="mt-3 text-3xl font-bold sm:text-4xl">
-            Contact ahora funciona como CRUD para la API remota
+            Singers ahora funciona como CRUD para la API remota de cantantes
           </h1>
           <p className="mt-3 max-w-3xl text-sm text-slate-300 sm:text-base">
-            Puedes crear, editar, eliminar y volver a cargar los registros con
-            nombre y edad desde la API de Retool.
+            Puedes crear, editar, eliminar y volver a cargar los registros de cantantes desde la API de Retool.
           </p>
  
           <div className="mt-6 flex flex-wrap gap-3">
@@ -66,12 +67,14 @@ const Contact = () => {
         </header>
  
         {activeTab === "form" ? (
-          <DataTestForm
+          <DataTestFormSingers
             id={id}
-            name={name}
-            setName={setName}
-            age={age}
-            setAge={setAge}
+            cancion={cancion}
+            setCancion={setCancion}
+            cantante={cantante}
+            setCantante={setCantante}
+            nacionalidad={nacionalidad}
+            setNacionalidad={setNacionalidad}
             onSubmit={handleSubmit}
             onCancel={() => setActiveTab("list")}
             submitting={submitting}
@@ -79,7 +82,7 @@ const Contact = () => {
             message={message}
           />
         ) : (
-          <DataTestList
+          <DataTestListSingers
             dataTest={dataTest}
             loading={loading}
             error={error}
@@ -93,4 +96,4 @@ const Contact = () => {
   );
 };
  
-export default Contact;
+export default Singers;
